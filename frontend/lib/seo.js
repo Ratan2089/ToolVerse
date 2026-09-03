@@ -1,5 +1,6 @@
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ;
+  process.env.NEXT_PUBLIC_APP_URL ||
+  "http://localhost:3000";
 
 /**
  * Default metadata used by the root layout.
@@ -53,46 +54,32 @@ export function constructMetadata({
     ? `${SITE_URL}/${slug.replace(/^\/+/, "")}`
     : SITE_URL;
 
-  return {
+ return {
+  title,
+  description,
+  keywords,
+
+  openGraph: {
     title,
-
     description,
+    url,
+    siteName: "ToolVerse",
+    type: "website",
+    images: [
+      {
+        url: image,
+        alt: title,
+      },
+    ],
+  },
 
-    keywords,
-
-    alternates: {
-      canonical: url,
-    },
-
-    openGraph: {
-      title,
-
-      description,
-
-      url,
-
-      siteName: "ToolVerse",
-
-      type: "website",
-
-      images: [
-        {
-          url: image,
-          alt: title,
-        },
-      ],
-    },
-
-    twitter: {
-      card: "summary_large_image",
-
-      title,
-
-      description,
-
-      images: [image],
-    },
-  };
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: [image],
+  },
+};
 }
 
 

@@ -31,13 +31,13 @@ console.log(
 
     keywords: tool.keywords,
 
-    openGraph: {
-      title: `${tool.title} | ToolVerse`,
-      description: tool.description,
-      url: `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/tools/${tool.slug}`,
-      siteName: "ToolVerse",
-      type: "website",
-    },
+   openGraph: {
+  title: `${tool.title} | ToolVerse`,
+  description: tool.description,
+  url: `${process.env.NEXT_PUBLIC_APP_URL || "https://toolverse-dev.vercel.app"}/tools/${tool.slug}`,
+  siteName: "ToolVerse",
+  type: "website",
+},
 
     twitter: {
       card: "summary",
