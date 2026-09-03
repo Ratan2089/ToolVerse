@@ -13,8 +13,10 @@ export async function generateMetadata({ params }) {
 
   const tool = getToolBySlug(slug);
 
-    console.log("NEXT_PUBLIC_APP_URL =", process.env.NEXT_PUBLIC_APP_URL);
-
+console.log(
+  "APP_URL_CONFIGURED:",
+  process.env.NEXT_PUBLIC_APP_URL === "https://toolverse-dev.vercel.app"
+);
 
   if (!tool) {
     return {
