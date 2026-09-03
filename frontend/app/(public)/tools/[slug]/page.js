@@ -13,6 +13,9 @@ export async function generateMetadata({ params }) {
 
   const tool = getToolBySlug(slug);
 
+    console.log("NEXT_PUBLIC_APP_URL =", process.env.NEXT_PUBLIC_APP_URL);
+
+
   if (!tool) {
     return {
       title: "Tool Not Found | ToolVerse",
