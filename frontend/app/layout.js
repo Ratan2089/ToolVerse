@@ -14,6 +14,10 @@ export const metadata = {
 
   description: DEFAULT_SEO.description,
 
+  verification: {
+  google: "hMc7BVUvM-v6_vZ98dZlx_zuTFTerYEtZONHVdoG1qk",
+},
+
   keywords: [
     "online tools",
     "developer tools",
