@@ -1,0 +1,16 @@
+{
+  "name": "toolverse-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ToolVerse monorepo — Next.js 15 frontend + Express backend",
+  "scripts": {
+    "dev": "concurrently -n \"frontend,backend\" -c \"cyan,yellow\" \"npm run dev --prefix frontend\" \"npm run dev --prefix backend\"",
+    "frontend": "npm run dev --prefix frontend",
+    "backend": "npm run dev --prefix backend",
+    "build": "npm run build --prefix frontend",
+    "install:all": "npm install --prefix frontend && npm install --prefix backend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
