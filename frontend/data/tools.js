@@ -176,17 +176,22 @@ export const tools = [
     category: "Developer",
 
     description:
-      "Format, beautify, minify, and validate JSON instantly in your browser.",
+  "Format, beautify, validate, and minify JSON online for free. Pretty-print JSON, check syntax errors, or compress JSON directly in your browser.",
 
-    keywords: [
-      "json formatter",
-      "json validator",
-      "json beautifier",
-      "json minifier",
-      "format json",
-      "validate json",
-    ],
-
+keywords: [
+  "json formatter",
+  "json formatter online",
+  "online json formatter",
+  "json validator",
+  "json validator online",
+  "json beautifier",
+  "json pretty print",
+  "pretty print json",
+  "json minifier",
+  "json minify",
+  "format json",
+  "validate json",
+],
     featured: true,
 
     status: "available",
@@ -206,15 +211,20 @@ export const tools = [
   category: "Developer",
 
   description:
-    "Encode and decode Base64 text with UTF-8 support directly in your browser.",
+  "Encode and decode Base64 text online with UTF-8 support. Convert text to Base64 or decode Base64 strings directly in your browser.",
 
-  keywords: [
-    "base64 encoder",
-    "base64 decoder",
-    "base64 encode",
-    "base64 decode",
-    "base64 converter",
-  ],
+keywords: [
+  "base64 encoder",
+  "base64 decoder",
+  "base64 encoder online",
+  "base64 decoder online",
+  "base64 encode",
+  "base64 decode",
+  "base64 converter",
+  "text to base64",
+  "base64 to text",
+  "utf8 base64 encoder",
+],
 
   featured: true,
 
@@ -234,16 +244,21 @@ export const tools = [
 
   category: "Developer",
 
-  description:
-    "Decode JWT headers and payloads instantly in your browser without sending your token to a server.",
+ description:
+  "Decode JWT tokens online and inspect JWT headers and payloads instantly. Parse JSON Web Tokens securely in your browser without sending your token to a server.",
 
-  keywords: [
-    "jwt decoder",
-    "jwt decode",
-    "json web token decoder",
-    "jwt parser",
-    "jwt payload decoder",
-  ],
+keywords: [
+  "jwt decoder",
+  "jwt decoder online",
+  "jwt parser",
+  "jwt token decoder",
+  "json web token decoder",
+  "jwt decode",
+  "decode jwt token",
+  "jwt payload decoder",
+  "jwt header decoder",
+  "jwt token parser",
+],
 
   featured: true,
 
@@ -264,15 +279,20 @@ export const tools = [
   category: "Developer",
 
   description:
-    "Generate secure random UUID v4 identifiers instantly in your browser.",
+  "Generate random UUID v4 identifiers online for free. Create single or multiple UUIDs instantly in your browser.",
 
-  keywords: [
-    "uuid generator",
-    "uuid v4 generator",
-    "guid generator",
-    "random uuid",
-    "uuid validator",
-  ],
+keywords: [
+  "uuid generator",
+  "uuid generator online",
+  "uuid v4 generator",
+  "random uuid generator",
+  "uuid generator bulk",
+  "bulk uuid generator",
+  "guid generator",
+  "random guid generator",
+  "uuid v4",
+  "generate uuid",
+],
 
   featured: true,
 
@@ -293,15 +313,20 @@ export const tools = [
   category: "Security & Crypto",
 
   description:
-    "Generate strong cryptographically secure passwords with customizable length, characters, symbols, and options.",
+  "Generate strong, secure random passwords online for free. Customize password length, uppercase and lowercase letters, numbers, symbols, and more.",
 
-  keywords: [
-    "password generator",
-    "strong password generator",
-    "secure password generator",
-    "random password generator",
-    "online password generator",
-  ],
+keywords: [
+  "password generator",
+  "password generator online",
+  "strong password generator",
+  "secure password generator",
+  "random password generator",
+  "strong random password",
+  "secure random password",
+  "online password generator",
+  "complex password generator",
+  "password creator",
+],
 
   featured: true,
 
@@ -317,20 +342,25 @@ export const tools = [
 {
   slug: "timestamp-converter",
 
-  title: "Timestamp Converter",
+title: "Unix Timestamp Converter",
 
   category: "Developer",
 
   description:
-    "Convert Unix timestamps to readable dates and dates to Unix timestamps with seconds and milliseconds support.",
+  "Convert Unix timestamps to readable dates and dates to Unix timestamps online. Supports Unix epoch timestamps in seconds and milliseconds.",
 
-  keywords: [
-    "timestamp converter",
-    "unix timestamp converter",
-    "epoch converter",
-    "timestamp to date",
-    "date to timestamp",
-  ],
+keywords: [
+  "timestamp converter",
+  "unix timestamp converter",
+  "unix time converter",
+  "epoch converter",
+  "epoch timestamp converter",
+  "timestamp to date",
+  "date to timestamp",
+  "unix timestamp to date",
+  "unix time converter online",
+  "epoch time converter",
+],
 
   featured: true,
 
@@ -346,21 +376,25 @@ export const tools = [
 {
   slug: "hash-generator",
 
-  title: "Hash Generator",
+title: "Hash Generator - SHA-256, SHA-512 & More",
 
   category: "Security & Crypto",
 
-  description:
-    "Generate SHA-1, SHA-256, SHA-384, and SHA-512 hashes from text directly in your browser.",
+ description:
+  "Generate SHA-256, SHA-512, SHA-384, and SHA-1 hashes online from text. Calculate cryptographic hashes directly in your browser.",
 
-  keywords: [
-    "hash generator",
-    "sha256 generator",
-    "sha512 generator",
-    "sha1 generator",
-    "sha384 generator",
-    "hash verifier",
-  ],
+keywords: [
+  "hash generator",
+  "hash generator online",
+  "sha256 generator",
+  "sha256 hash generator",
+  "sha512 generator",
+  "sha512 hash generator",
+  "sha384 generator",
+  "sha1 generator",
+  "text hash generator",
+  "cryptographic hash generator",
+],
 
   featured: true,
 
@@ -381,16 +415,21 @@ export const tools = [
   category: "Developer",
 
   description:
-    "Encode, decode, and parse URLs and URL components online using standard browser URL APIs.",
+  "Encode and decode URLs and URL components online using percent encoding. Convert special characters for URLs, query parameters, and web requests.",
 
-  keywords: [
-    "url encoder",
-    "url decoder",
-    "url encode",
-    "url decode",
-    "url parser",
-    "query parameter parser",
-  ],
+keywords: [
+  "url encoder",
+  "url decoder",
+  "url encoder online",
+  "url decoder online",
+  "url encode",
+  "url decode",
+  "percent encoding",
+  "percent encoder",
+  "url component encoder",
+  "query parameter encoder",
+  "url parser",
+],
 
   featured: true,
 
@@ -406,24 +445,25 @@ export const tools = [
 {
   slug: "case-converter",
 
-  title: "Case Converter",
-
+title: "Case Converter - Uppercase, Lowercase & More",
   category: "Text & Formatting",
 
   description:
-    "Convert text between uppercase, lowercase, Title Case, Sentence case, camelCase, PascalCase, snake_case, kebab-case, and more.",
-
+  "Convert text to uppercase, lowercase, Title Case, Sentence case, camelCase, PascalCase, snake_case, kebab-case, and more online.",
   keywords: [
-    "case converter",
-    "text case converter",
-    "uppercase converter",
-    "lowercase converter",
-    "camel case converter",
-    "pascal case converter",
-    "snake case converter",
-    "kebab case converter",
-    "title case converter",
-  ],
+  "case converter",
+  "case converter online",
+  "text case converter",
+  "uppercase converter",
+  "lowercase converter",
+  "title case converter",
+  "sentence case converter",
+  "camel case converter",
+  "pascal case converter",
+  "snake case converter",
+  "kebab case converter",
+  "text converter",
+],
 
   featured: true,
 
@@ -439,23 +479,27 @@ export const tools = [
 {
   slug: "word-counter",
 
-  title: "Word Counter",
+title: "Word Counter - Words, Characters & Reading Time",
 
   category: "Text & Formatting",
 
   description:
-    "Count words, characters, sentences, paragraphs, lines, reading time, and more.",
+  "Count words, characters, sentences, paragraphs, lines, and estimated reading time online. Free word and character counter for text, essays, articles, and more.",
 
-  keywords: [
-    "word counter",
-    "word count",
-    "character counter",
-    "character count",
-    "sentence counter",
-    "paragraph counter",
-    "reading time calculator",
-    "text analyzer",
-  ],
+keywords: [
+  "word counter",
+  "word counter online",
+  "word count",
+  "online word counter",
+  "character counter",
+  "character count",
+  "sentence counter",
+  "paragraph counter",
+  "line counter",
+  "reading time calculator",
+  "text analyzer",
+  "word count calculator",
+],
 
   featured: true,
 
