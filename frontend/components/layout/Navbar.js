@@ -34,13 +34,11 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [categoriesDropdown, setCategoriesDropdown] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [mobileSearchQuery, setMobileSearchQuery] = useState("");
 
   /*
    * Map the existing category names to the category values
    * used by tools in the registry.
-   *
-   * Counts are calculated from tools.js.
-   * Nothing here is a numeric/hardcoded tool count.
    */
   const CATEGORY_ALIASES = {
     developer: ["developer"],
@@ -124,6 +122,22 @@ export default function Navbar() {
     }
   };
 
+  const handleMobileSearchSubmit = (event) => {
+    event.preventDefault();
+
+    const query = mobileSearchQuery.trim();
+
+    setMobileMenuOpen(false);
+
+    if (query) {
+      router.push(
+        `/tools?search=${encodeURIComponent(query)}`
+      );
+    } else {
+      router.push("/tools");
+    }
+  };
+
   const closeMenus = () => {
     setCategoriesDropdown(false);
     setMobileMenuOpen(false);
@@ -142,7 +156,7 @@ export default function Navbar() {
   }, []);
 
   /*
-   * Close the mobile menu when switching to desktop.
+   * Close mobile menu when switching to desktop.
    */
   useEffect(() => {
     const handleResize = () => {
@@ -160,24 +174,23 @@ export default function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         isScrolled
-          ? "glass-navbar shadow-sm py-3"
-          : "bg-transparent py-4 border-b border-slate-200/40 dark:border-slate-800/40"
+          ? "glass-navbar shadow-sm py-2.5 sm:py-3"
+          : "bg-transparent py-3 sm:py-4 border-b border-slate-200/40 dark:border-slate-800/40"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-
+      <div className="w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="flex min-w-0 items-center justify-between gap-2 sm:gap-4">
           {/* =========================================================
               LOGO
           ========================================================= */}
           <Link
             href="/"
-            className="flex items-center gap-2.5 group"
+            className="flex min-w-0 shrink items-center gap-2 sm:gap-2.5 group"
             onClick={closeMenus}
           >
-            <div className="w-10 h-10 rounded-2xl overflow-hidden shadow-glow group-hover:scale-105 transition-transform duration-200">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-2xl overflow-hidden shadow-glow group-hover:scale-105 transition-transform duration-200">
               <Image
                 src="/toolverse-logo.png"
                 alt="ToolVerse"
@@ -188,15 +201,15 @@ export default function Navbar() {
               />
             </div>
 
-            <div className="flex flex-col">
-              <span className="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white flex items-center gap-1">
+            <div className="min-w-0 flex flex-col">
+              <span className="text-lg sm:text-xl font-extrabold tracking-tight text-slate-900 dark:text-white flex items-center gap-1 whitespace-nowrap">
                 Tool
                 <span className="gradient-text">
                   Verse
                 </span>
               </span>
 
-              <span className="text-[10px] font-medium text-slate-500 dark:text-slate-400 -mt-1 tracking-wider uppercase">
+              <span className="text-[9px] sm:text-[10px] font-medium text-slate-500 dark:text-slate-400 -mt-1 tracking-wider uppercase whitespace-nowrap">
                 Utility SaaS
               </span>
             </div>
@@ -205,8 +218,7 @@ export default function Navbar() {
           {/* =========================================================
               DESKTOP NAVIGATION
           ========================================================= */}
-          <nav className="hidden md:flex items-center gap-1 bg-slate-100/70 dark:bg-slate-900/60 p-1.5 rounded-2xl border border-slate-200/50 dark:border-slate-800/80">
-
+          <nav className="hidden md:flex shrink-0 items-center gap-1 bg-slate-100/70 dark:bg-slate-900/60 p-1.5 rounded-2xl border border-slate-200/50 dark:border-slate-800/80">
             {/* All Tools */}
             <Link
               href="/tools"
@@ -275,11 +287,9 @@ export default function Navbar() {
                     className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[440px]"
                   >
                     <div className="rounded-2xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 shadow-2xl shadow-slate-900/10 dark:shadow-black/30 overflow-hidden">
-
                       {/* Dropdown Header */}
                       <div className="px-5 py-4 border-b border-slate-200/80 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-900/70">
-                        <div className="flex items-center justify-between">
-
+                        <div className="flex items-center justify-between gap-4">
                           <div>
                             <div className="text-sm font-bold text-slate-900 dark:text-white">
                               Browse Categories
@@ -295,7 +305,7 @@ export default function Navbar() {
                             onClick={() =>
                               setCategoriesDropdown(false)
                             }
-                            className="flex items-center gap-1.5 text-[11px] font-semibold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 transition-colors"
+                            className="flex shrink-0 items-center gap-1.5 text-[11px] font-semibold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 transition-colors"
                           >
                             View all
                             <FiArrowRight className="w-3.5 h-3.5" />
@@ -342,12 +352,10 @@ export default function Navbar() {
                                   : ""
                               }`}
                             >
-                              {/* Icon */}
                               <div className="w-9 h-9 shrink-0 rounded-xl bg-slate-100 dark:bg-slate-800 group-hover:bg-white dark:group-hover:bg-slate-800 flex items-center justify-center text-brand-600 dark:text-brand-400 border border-slate-200/70 dark:border-slate-700 group-hover:border-brand-200 dark:group-hover:border-brand-800 transition-all">
                                 <Icon className="w-4 h-4" />
                               </div>
 
-                              {/* Text */}
                               <div className="min-w-0 flex-1">
                                 <div className="flex items-center justify-between gap-2">
                                   <span className="text-xs font-bold text-slate-800 dark:text-slate-200 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors truncate">
@@ -374,9 +382,7 @@ export default function Navbar() {
                         <Link
                           href="/tools"
                           onClick={() =>
-                            setCategoriesDropdown(
-                              false
-                            )
+                            setCategoriesDropdown(false)
                           }
                           className="flex items-center justify-center gap-2 w-full py-2 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-white dark:hover:bg-slate-800 transition-all"
                         >
@@ -405,12 +411,14 @@ export default function Navbar() {
           {/* =========================================================
               RIGHT SIDE
           ========================================================= */}
-          <div className="flex items-center gap-2.5">
-
-            {/* Search */}
+          <div className="flex shrink-0 items-center gap-2 sm:gap-2.5">
+            {/* Desktop Search
+                IMPORTANT:
+                Hidden on mobile so the navbar never gets compressed.
+            */}
             <form
               onSubmit={handleSearchSubmit}
-              className="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800/80 text-slate-500 dark:text-slate-400 border border-slate-200/60 dark:border-slate-800 transition-all"
+              className="hidden md:flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800/80 text-slate-500 dark:text-slate-400 border border-slate-200/60 dark:border-slate-800 transition-all"
             >
               <FiSearch className="w-4 h-4 text-brand-500 shrink-0" />
 
@@ -452,7 +460,7 @@ export default function Navbar() {
                   (current) => !current
                 )
               }
-              className="md:hidden p-2 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200/60 dark:border-slate-800"
+              className="md:hidden w-10 h-10 shrink-0 flex items-center justify-center rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200/60 dark:border-slate-800"
               aria-label="Toggle Menu"
               aria-expanded={mobileMenuOpen}
             >
@@ -487,84 +495,118 @@ export default function Navbar() {
             transition={{
               duration: 0.2,
             }}
-            className="md:hidden bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 px-4 py-4 shadow-2xl overflow-hidden"
+            className="md:hidden w-full bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden"
           >
-            <div className="flex flex-col gap-2">
+            <div className="w-full max-w-7xl mx-auto px-3 sm:px-6 py-4">
+              <div className="flex flex-col gap-3">
+                {/* Mobile Search */}
+                <form
+                  onSubmit={handleMobileSearchSubmit}
+                  className="flex items-center gap-2 w-full px-3.5 py-3 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800"
+                >
+                  <FiSearch className="w-5 h-5 shrink-0 text-brand-500" />
 
-              {/* All Tools */}
-              <Link
-                href="/tools"
-                onClick={() =>
-                  setMobileMenuOpen(false)
-                }
-                className="p-3.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-brand-200 dark:hover:border-brand-900 flex items-center justify-between"
-              >
-                <div className="flex items-center gap-2.5">
-                  <FiGrid className="w-4 h-4 text-brand-500" />
-                  <span>All Tools</span>
-                </div>
+                  <input
+                    type="text"
+                    value={mobileSearchQuery}
+                    onChange={(event) =>
+                      setMobileSearchQuery(
+                        event.target.value
+                      )
+                    }
+                    placeholder="Search tools..."
+                    aria-label="Search tools"
+                    className="min-w-0 flex-1 bg-transparent outline-none border-none text-sm text-slate-900 dark:text-white placeholder:text-slate-500 dark:placeholder:text-slate-400"
+                  />
 
-                <span className="px-2 py-1 text-[10px] bg-brand-50 dark:bg-brand-950 text-brand-600 dark:text-brand-400 rounded-full font-bold border border-brand-100 dark:border-brand-900">
-                  {availableToolCount}
-                </span>
-              </Link>
-
-              {/* Category Heading */}
-              <div className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider px-2 pt-3">
-                Categories
-              </div>
-
-              {/* Mobile Categories */}
-              <div className="grid grid-cols-2 gap-2">
-                {categories.map((cat) => {
-                  const Icon =
-                    CATEGORY_ICONS[cat.slug] ||
-                    FiGrid;
-
-                  const toolCount =
-                    getCategoryToolCount(cat);
-
-                  return (
-                    <Link
-                      key={cat.slug}
-                      href={`/categories/${cat.slug}`}
+                  {mobileSearchQuery && (
+                    <button
+                      type="button"
                       onClick={() =>
-                        setMobileMenuOpen(false)
+                        setMobileSearchQuery("")
                       }
-                      className="p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-brand-200 dark:hover:border-brand-900 hover:text-brand-600 dark:hover:text-brand-400 transition-all"
+                      className="shrink-0 text-slate-400 hover:text-slate-700 dark:hover:text-white"
+                      aria-label="Clear search"
                     >
-                      <div className="flex items-center gap-2">
-                        <Icon className="w-4 h-4 text-brand-500 shrink-0" />
+                      <FiX className="w-4 h-4" />
+                    </button>
+                  )}
+                </form>
 
-                        <span className="text-xs font-semibold truncate">
-                          {cat.name}
-                        </span>
-                      </div>
-
-                      <div className="mt-1 ml-6 text-[10px] text-slate-400 dark:text-slate-500">
-                        {toolCount}{" "}
-                        {toolCount === 1
-                          ? "tool"
-                          : "tools"}
-                      </div>
-                    </Link>
-                  );
-                })}
-              </div>
-
-              {/* Dashboard */}
-              <div className="pt-3 border-t border-slate-200/60 dark:border-slate-800 flex gap-2">
+                {/* All Tools */}
                 <Link
-                  href="/dashboard"
+                  href="/tools"
                   onClick={() =>
                     setMobileMenuOpen(false)
                   }
-                  className="flex-1 py-2.5 text-center text-xs font-semibold text-white bg-brand-600 hover:bg-brand-700 rounded-xl transition-colors"
+                  className="w-full p-3.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-brand-200 dark:hover:border-brand-900 flex items-center justify-between"
                 >
-                  Dashboard / Sign In
-                </Link>
-              </div>
+                  <div className="flex items-center gap-2.5">
+                    <FiGrid className="w-4 h-4 text-brand-500" />
+                    <span>All Tools</span>
+                  </div>
 
+                  <span className="px-2 py-1 text-[10px] bg-brand-50 dark:bg-brand-950 text-brand-600 dark:text-brand-400 rounded-full font-bold border border-brand-100 dark:border-brand-900">
+                    {availableToolCount}
+                  </span>
+                </Link>
+
+                {/* Category Heading */}
+                <div className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider px-2 pt-2">
+                  Categories
+                </div>
+
+                {/* Mobile Categories */}
+                <div className="grid grid-cols-1 min-[360px]:grid-cols-2 gap-2">
+                  {categories.map((cat) => {
+                    const Icon =
+                      CATEGORY_ICONS[cat.slug] ||
+                      FiGrid;
+
+                    const toolCount =
+                      getCategoryToolCount(cat);
+
+                    return (
+                      <Link
+                        key={cat.slug}
+                        href={`/categories/${cat.slug}`}
+                        onClick={() =>
+                          setMobileMenuOpen(false)
+                        }
+                        className="min-w-0 p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-brand-200 dark:hover:border-brand-900 hover:text-brand-600 dark:hover:text-brand-400 transition-all"
+                      >
+                        <div className="flex items-center gap-2 min-w-0">
+                          <Icon className="w-4 h-4 text-brand-500 shrink-0" />
+
+                          <span className="text-xs font-semibold truncate">
+                            {cat.name}
+                          </span>
+                        </div>
+
+                        <div className="mt-1 ml-6 text-[10px] text-slate-400 dark:text-slate-500">
+                          {toolCount}{" "}
+                          {toolCount === 1
+                            ? "tool"
+                            : "tools"}
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+
+                {/* Dashboard */}
+                <div className="pt-3 border-t border-slate-200/60 dark:border-slate-800 flex">
+                  <Link
+                    href="/dashboard"
+                    onClick={() =>
+                      setMobileMenuOpen(false)
+                    }
+                    className="w-full py-3 text-center text-xs font-semibold text-white bg-brand-600 hover:bg-brand-700 rounded-xl transition-colors"
+                  >
+                    Dashboard / Sign In
+                  </Link>
+                </div>
+              </div>
             </div>
           </motion.div>
         )}
