@@ -4,23 +4,20 @@ import Link from "next/link";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import {
-  FiSearch,
   FiZap,
   FiShield,
-  FiCheckCircle,
-  FiCpu,
-  FiGlobe,
   FiArrowRight,
-  FiCode,
   FiGrid,
   FiTerminal,
 } from "react-icons/fi";
+
 import ToolCard from "@/components/cards/ToolCard";
 import CategoryCard from "@/components/cards/CategoryCard";
 import FeatureCard from "@/components/cards/FeatureCard";
 import SectionHeading from "@/components/shared/SectionHeading";
 import Button from "@/components/ui/Button";
 import SearchBar from "@/components/shared/SearchBar";
+
 import { categories } from "@/data/categories";
 import { tools } from "@/data/tools";
 import { useRouter } from "next/navigation";
@@ -54,73 +51,93 @@ export default function LandingPage() {
     <div className="space-y-24 py-8 sm:py-16 overflow-hidden">
       {/* HERO SECTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="max-w-4xl mx-auto space-y-6"
-        >
+        <div className="max-w-4xl mx-auto space-y-6">
           {/* Top Pill Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-50 dark:bg-brand-950/80 text-brand-600 dark:text-brand-400 border border-brand-200 dark:border-brand-900 text-xs font-semibold shadow-sm">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35 }}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-50 dark:bg-brand-950/80 text-brand-600 dark:text-brand-400 border border-brand-200 dark:border-brand-900 text-xs font-semibold shadow-sm"
+          >
             <span className="w-2 h-2 rounded-full bg-brand-500 animate-pulse" />
-            <span>10+ Free Tools — No Sign-Up Required</span>
-          </div>
+            <span>25+ Free Tools — No Sign-Up Required</span>
+          </motion.div>
 
-          {/* Headline */}
+          {/* LCP HEADLINE - RENDERS IMMEDIATELY */}
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.1]">
             Every Developer & Utility Tool,{" "}
             <span className="gradient-text">Instant & Private.</span>
           </h1>
 
-          {/* Subtitle */}
-          <p className="text-base sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            Format JSON, decode JWTs, generate secure passwords, design QR
-            codes, and run conversions directly in your browser.
-          </p>
-
-          {/* Interactive Search Bar Container */}
-          <form
-            onSubmit={handleHeroSearchSubmit}
-            className="pt-4 max-w-2xl mx-auto"
+          {/* Supporting Hero Content */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.08 }}
+            className="space-y-6"
           >
-            <SearchBar
-              value={heroSearch}
-              onChange={setHeroSearch}
-              onClear={() => setHeroSearch("")}
+            {/* Subtitle */}
+            <p className="text-base sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+              Format JSON, decode JWTs, generate secure passwords, and run
+              conversions directly in your browser.
+            </p>
+
+            {/* Interactive Search Bar Container */}
+            <form
               onSubmit={handleHeroSearchSubmit}
-              size="lg"
-              placeholder="Search 20+ tools (e.g. JSON, JWT, QR Code, Password)..."
-            />
+              className="pt-4 max-w-2xl mx-auto"
+            >
+              <SearchBar
+                value={heroSearch}
+                onChange={setHeroSearch}
+                onClear={() => setHeroSearch("")}
+                onSubmit={handleHeroSearchSubmit}
+                size="lg"
+                placeholder="Search 25+ tools (e.g. JSON, JWT, Password)..."
+              />
 
-            {/* Popular Quick Pills */}
-            <div className="flex items-center justify-center flex-wrap gap-2 mt-4 text-xs">
-              <span className="text-slate-400 font-semibold">Popular:</span>
-              {quickPills.map((pill) => (
-                <Link
-                  key={pill.slug}
-                  href={`/tools/${pill.slug}`}
-                  className="px-3 py-1 rounded-xl bg-slate-100 dark:bg-slate-800/80 hover:bg-brand-50 dark:hover:bg-brand-950 hover:text-brand-600 dark:hover:text-brand-400 text-slate-600 dark:text-slate-300 font-medium border border-slate-200/60 dark:border-slate-800 transition-all"
+              {/* Popular Quick Pills */}
+              <div className="flex items-center justify-center flex-wrap gap-2 mt-4 text-xs">
+                <span className="text-slate-400 font-semibold">
+                  Popular:
+                </span>
+
+                {quickPills.map((pill) => (
+                  <Link
+                    key={pill.slug}
+                    href={`/tools/${pill.slug}`}
+                    className="px-3 py-1 rounded-xl bg-slate-100 dark:bg-slate-800/80 hover:bg-brand-50 dark:hover:bg-brand-950 hover:text-brand-600 dark:hover:text-brand-400 text-slate-600 dark:text-slate-300 font-medium border border-slate-200/60 dark:border-slate-800 transition-all"
+                  >
+                    {pill.name}
+                  </Link>
+                ))}
+              </div>
+            </form>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
+              <Link href="/tools">
+                <Button
+                  size="lg"
+                  icon={FiArrowRight}
+                  iconPosition="right"
                 >
-                  {pill.name}
-                </Link>
-              ))}
-            </div>
-          </form>
+                  Explore All Tools
+                </Button>
+              </Link>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
-            <Link href="/tools">
-              <Button size="lg" icon={FiArrowRight} iconPosition="right">
-                Explore All Tools
-              </Button>
-            </Link>
-            <Link href="/categories">
-              <Button variant="outline" size="lg" icon={FiGrid}>
-                Browse Categories
-              </Button>
-            </Link>
-          </div>
-        </motion.div>
+              <Link href="/categories">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  icon={FiGrid}
+                >
+                  Browse Categories
+                </Button>
+              </Link>
+            </div>
+          </motion.div>
+        </div>
       </section>
 
       {/* POPULAR TOOLS SECTION */}
@@ -136,7 +153,10 @@ export default function LandingPage() {
             .filter((tool) => tool.featured)
             .slice(0, 6)
             .map((tool) => (
-              <ToolCard key={tool.slug} tool={tool} />
+              <ToolCard
+                key={tool.slug}
+                tool={tool}
+              />
             ))}
         </div>
 
@@ -169,7 +189,8 @@ export default function LandingPage() {
           {categories.map((cat) => {
             const toolCount = tools.filter(
               (tool) =>
-                tool.category?.toLowerCase() === cat.name?.toLowerCase(),
+                tool.category?.toLowerCase() ===
+                cat.name?.toLowerCase()
             ).length;
 
             return (
@@ -202,12 +223,14 @@ export default function LandingPage() {
               icon={FiZap}
               color="text-amber-500"
             />
+
             <FeatureCard
               title="100% In-Browser Privacy"
               description="Your confidential JSON payloads, tokens, and code snippets never reach a backend server. Everything executes client-side."
               icon={FiShield}
               color="text-emerald-500"
             />
+
             <FeatureCard
               title="SEO & Keyboard Native"
               description="Press '/' anytime to focus search. Every tool has its own dedicated permalink, structured metadata, and fast layout."
@@ -225,13 +248,16 @@ export default function LandingPage() {
             <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center mx-auto text-white">
               <FiZap className="w-8 h-8" />
             </div>
+
             <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight">
               Ready to boost your productivity?
             </h2>
+
             <p className="text-sm sm:text-base text-white/90 leading-relaxed">
               Start formatting, decoding, generating, and converting with zero
               friction today.
             </p>
+
             <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link href="/tools">
                 <button className="px-8 py-3.5 rounded-2xl bg-white text-slate-900 font-bold hover:bg-slate-100 transition-colors shadow-lg active:scale-95 text-sm">
