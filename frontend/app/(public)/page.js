@@ -47,7 +47,6 @@ export default function LandingPage() {
   const quickPills = [
     { name: "JSON Formatter", slug: "json-formatter" },
     { name: "JWT Decoder", slug: "jwt-decoder" },
-    { name: "QR Code Generator", slug: "qr-code-generator" },
     { name: "Password Generator", slug: "password-generator" },
   ];
 

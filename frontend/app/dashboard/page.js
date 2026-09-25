@@ -101,7 +101,6 @@ export default function DashboardPage() {
           {[
             { title: 'JSON Formatter', slug: 'json-formatter', desc: 'Format and validate JSON' },
             { title: 'JWT Decoder', slug: 'jwt-decoder', desc: 'Inspect JWT tokens' },
-            { title: 'QR Code Generator', slug: 'qr-code-generator', desc: 'Custom QR vectors' },
             { title: 'Password Generator', slug: 'password-generator', desc: 'Strong random passwords' },
           ].map((item) => (
             <Link key={item.slug} href={`/tools/${item.slug}`}>
